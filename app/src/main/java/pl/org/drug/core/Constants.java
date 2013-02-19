@@ -39,7 +39,7 @@ public class Constants {
         /**
          * Base URL for all requests
          */
-        public static final String URL_BASE = "http://192.168.43.3:3001/api";
+        public static final String URL_BASE = "http://10.0.1.5:3001/api";
 
         /**
          * Events URL
