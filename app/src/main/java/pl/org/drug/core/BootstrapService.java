@@ -9,6 +9,8 @@ import static pl.org.drug.core.Constants.Http.URL_CHECKINS;
 import static pl.org.drug.core.Constants.Http.URL_NEWS;
 import static pl.org.drug.core.Constants.Http.URL_USERS;
 import static pl.org.drug.core.Constants.Http.URL_EVENTS;
+import static pl.org.drug.core.Constants.Http.URL_BASE;
+import static pl.org.drug.core.Constants.Http.URL_LAST_EVENT;
 
 import android.provider.LiveFolders;
 import com.github.kevinsawicki.http.HttpRequest;
@@ -59,6 +61,10 @@ public class BootstrapService {
     private static class NewsWrapper {
 
         private List<News> results;
+    }
+
+    private static class PresentationWrapper {
+      private List<Presentation> presentations;
     }
 
     private static class CheckInWrapper {
@@ -206,12 +212,12 @@ public class BootstrapService {
      * @return non-null but possibly empty list of bootstrap
      * @throws IOException
      */
-    public List<News> getNews() throws IOException {
+    public List<Presentation> getNews() throws IOException {
         try {
-            HttpRequest request = execute(HttpRequest.get(URL_NEWS));
-            NewsWrapper response = fromJson(request, NewsWrapper.class);
-            if (response != null && response.results != null)
-                return response.results;
+            HttpRequest request = execute(HttpRequest.get(URL_BASE + "/events/" + getLastEvent().getId() + "/presentations.json"));
+            PresentationWrapper response = fromJson(request, PresentationWrapper.class);
+            if (response != null && response.presentations != null)
+                return response.presentations;
             return Collections.emptyList();
         } catch (HttpRequestException e) {
             throw e.getCause();
@@ -234,6 +240,19 @@ public class BootstrapService {
         } catch (HttpRequestException e) {
             throw e.getCause();
         }
+    }
+
+    public DrugEvent getLastEvent() throws IOException {
+      try {
+        HttpRequest request = execute(HttpRequest.get(URL_LAST_EVENT));
+        DrugEvent response = fromJson(request, DrugEvent.class);
+        if (response != null)
+          return response;
+        else
+          return new DrugEvent();
+      } catch (HttpRequestException e) {
+        throw e.getCause();
+      }
     }
 
 }

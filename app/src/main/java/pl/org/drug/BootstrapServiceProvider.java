@@ -2,6 +2,7 @@
 package pl.org.drug;
 
 import android.accounts.AccountsException;
+
 import pl.org.drug.authenticator.ApiKeyProvider;
 import pl.org.drug.core.BootstrapService;
 import pl.org.drug.core.UserAgentProvider;
@@ -27,6 +28,6 @@ public class BootstrapServiceProvider {
      * @throws AccountsException
      */
     public BootstrapService getService() throws IOException, AccountsException {
-        return new BootstrapService(keyProvider.getAuthKey(), userAgentProvider);
+        return new BootstrapService(new String(), userAgentProvider);
     }
 }

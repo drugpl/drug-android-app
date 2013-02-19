@@ -42,9 +42,9 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
             newsFragment.setArguments(bundle);
             return newsFragment;
         case 1:
-            UserListFragment userListFragment = new UserListFragment();
-            userListFragment.setArguments(bundle);
-            return userListFragment;
+            UserActivity userActivity = new UserActivity();
+            userActivity.setArguments(bundle);
+            return userActivity;
         case 2:
             CheckInsListFragment checkInsFragment = new CheckInsListFragment();
             checkInsFragment.setArguments(bundle);
@@ -58,7 +58,7 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
         case 0:
-            return resources.getString(R.string.page_news);
+            return resources.getString(R.string.presentations);
         case 1:
             return resources.getString(R.string.current_drug);
         case 2:

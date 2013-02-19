@@ -14,10 +14,11 @@ import pl.org.drug.R;
 import pl.org.drug.core.News;
 import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
 import com.google.inject.Inject;
+import pl.org.drug.core.Presentation;
 
 import java.util.List;
 
-public class NewsListFragment extends ItemListFragment<News> {
+public class NewsListFragment extends ItemListFragment<Presentation> {
 
     @Inject protected BootstrapServiceProvider serviceProvider;
 
@@ -25,7 +26,7 @@ public class NewsListFragment extends ItemListFragment<News> {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        setEmptyText(R.string.no_news);
+        setEmptyText(R.string.no_presentations);
     }
 
     @Override
@@ -48,18 +49,18 @@ public class NewsListFragment extends ItemListFragment<News> {
     }
 
     @Override
-    public Loader<List<News>> onCreateLoader(int id, Bundle args) {
-        final List<News> initialItems = items;
-        return new ThrowableLoader<List<News>>(getActivity(), items) {
+    public Loader<List<Presentation>> onCreateLoader(int id, Bundle args) {
+        final List<Presentation> initialItems = items;
+        return new ThrowableLoader<List<Presentation>>(getActivity(), items) {
 
             @Override
-            public List<News> loadData() throws Exception {
+            public List<Presentation> loadData() throws Exception {
                 try {
                     return serviceProvider.getService().getNews();
                 } catch (OperationCanceledException e) {
                     Activity activity = getActivity();
                     if (activity != null)
-                        activity.finish();
+                      activity.finish();
                     return initialItems;
                 }
             }
@@ -67,12 +68,12 @@ public class NewsListFragment extends ItemListFragment<News> {
     }
 
     @Override
-    protected SingleTypeAdapter<News> createAdapter(List<News> items) {
+    protected SingleTypeAdapter<Presentation> createAdapter(List<Presentation> items) {
         return new NewsListAdapter(getActivity().getLayoutInflater(), items);
     }
 
     public void onListItemClick(ListView l, View v, int position, long id) {
-        News news = ((News) l.getItemAtPosition(position));
+        Presentation news = ((Presentation) l.getItemAtPosition(position));
 
         startActivity(new Intent(getActivity(), NewsActivity.class).putExtra(NEWS_ITEM, news));
     }

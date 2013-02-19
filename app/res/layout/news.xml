@@ -20,7 +20,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/table_text_selector"
-                />
+            android:textSize="50dp" android:singleLine="false" android:textStyle="bold"
+            android:autoText="false" android:gravity="center_horizontal"/>
 
         <TextView
             android:id="@+id/tv_content"
@@ -28,7 +29,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/table_text_light_selector"
-            />
+            android:textStyle="normal" android:textSize="15dp"/>
 
     </LinearLayout>
 

@@ -84,7 +84,7 @@ public class UserListFragment  extends ItemListFragment<User> {
 
     @Override
     protected int getErrorMessage(Exception exception) {
-        return R.string.error_loading_users;
+        return R.string.error_loading_drug;
     }
 
     @Override

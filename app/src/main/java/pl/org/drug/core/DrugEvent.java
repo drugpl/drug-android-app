@@ -7,8 +7,17 @@ import java.util.Date;
 
 public class DrugEvent implements Serializable {
 
+    protected Integer id;
     protected String title;
     protected String description;
+
+    public Integer getId() {
+      return id;
+    }
+
+    public Integer setId(Integer id) {
+      return this.id = id;
+    }
 
     public String getTitle() {
       return title;

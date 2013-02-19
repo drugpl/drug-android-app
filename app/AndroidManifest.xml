@@ -40,6 +40,28 @@
 
         <service android:name=".core.TimerService" android:enabled="true" android:exported="false" />
 
+        <service
+            android:name=".authenticator.AccountAuthenticatorService"
+            android:process=":auth" >
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+        </service>
+
+        <activity
+            android:name=".authenticator.BootstrapAuthenticatorActivity"
+            android:excludeFromRecents="true" >
+
+            <!--
+                No intent-filter here! This activity is only ever launched by
+                someone who explicitly knows the class name
+            -->
+        </activity>
+
         <activity android:name=".ui.NewsActivity" />
         <activity android:name=".ui.UserActivity" android:label="@string/app_name" />
 

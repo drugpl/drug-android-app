@@ -1,29 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:paddingBottom="5dp"
-              android:paddingLeft="10dp"
-              android:paddingRight="10dp"
-              android:paddingTop="5dp">
-
-    <ImageView
-            android:id="@+id/iv_avatar"
-            style="@style/AvatarLarge"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="10dp"
-            android:contentDescription="@string/avatar"
-            />
-
-    <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/table_text_selector" />
-
-
-
-</LinearLayout>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/scrollView">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:orientation="vertical" android:paddingBottom="5dp" android:paddingLeft="10dp"
+                  android:paddingRight="10dp" android:paddingTop="5dp" android:gravity="center_horizontal|clip_vertical">
+        <TextView android:id="@+id/tv_title" android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:textAppearance="?android:attr/textAppearanceLarge"
+                  android:textColor="@color/table_text_selector" android:textSize="40dp"
+                  android:gravity="center_horizontal" android:textStyle="bold"/>
+        <TextView android:id="@+id/tv_description" android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:textAppearance="?android:attr/textAppearanceSmall"
+                  android:textColor="@color/table_text_light_selector"
+                  android:textSize="15dp" android:textIsSelectable="false"/>
+        <ProgressBar style="@style/ListSpinner" android:id="@+id/progressBar" android:layout_centerInParent="true"
+                     android:layout_width="wrap_content" android:layout_height="wrap_content"
+                     android:layout_gravity="center"/>
+    </LinearLayout>
+</ScrollView>

@@ -1,6 +1,7 @@
 
 package pl.org.drug.ui;
 
+import android.accounts.AccountManager;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
@@ -20,16 +21,21 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import pl.org.drug.R;
+import pl.org.drug.authenticator.LogoutService;
 import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
 import com.github.kevinsawicki.wishlist.Toaster;
 import com.github.kevinsawicki.wishlist.ViewUtils;
 import pl.org.drug.R.id;
 import pl.org.drug.R.layout;
+import pl.org.drug.R.menu;
 import com.github.rtyley.android.sherlock.roboguice.fragment.RoboSherlockFragment;
 import com.google.inject.Inject;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.Callable;
+
+import roboguice.util.RoboAsyncTask;
 
 /**
  * Base fragment for displaying a list of items that loads with a progress bar
@@ -39,6 +45,8 @@ import java.util.List;
  */
 public abstract class ItemListFragment<E> extends RoboSherlockFragment
         implements LoaderCallbacks<List<E>> {
+
+    @Inject protected LogoutService logoutService;
 
     private static final String FORCE_REFRESH = "forceRefresh";
 
@@ -165,7 +173,14 @@ public abstract class ItemListFragment<E> extends RoboSherlockFragment
     }
 
     private void logout() {
-      forceRefresh();
+        logoutService.logout(new Runnable() {
+            @Override
+            public void run() {
+                // Calling a refresh will force the service to look for a logged in user
+                // and when it finds none the user will be requested to log in again.
+                forceRefresh();
+            }
+        });
     }
 
     /**

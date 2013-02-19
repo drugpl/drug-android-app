@@ -7,18 +7,18 @@
     <string name="page_referrers">Referrers</string>
     <string name="refresh_action">Refresh</string>
     <string name="logout_action">Logout</string>
-    <string name="page_news">News</string>
+    <string name="presentations">Presentations</string>
     <string name="current_drug">DRUG</string>
     <string name="others">Others</string>
     <string name="title_column">Title</string>
     <string name="location_column">Location</string>
     <string name="user_column">User</string>
     <string name="date_column">Date</string>
-    <string name="error_loading_users">Loading users failed</string>
+    <string name="error_loading_drug">Loading current DRUG failed</string>
     <string name="error_loading_news">Loading news failed</string>
     <string name="error_loading_checkins">Loading check-ins failed</string>
-    <string name="no_drugs">No DRUG\'s</string>
-    <string name="no_news">No News</string>
+    <string name="no_drugs">OMG! NO DRUG!</string>
+    <string name="no_presentations">No presentations</string>
     <string name="avatar">Avatar</string>
     <string name="choose">Choose</string>
 

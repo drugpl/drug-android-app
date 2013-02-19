@@ -15,7 +15,7 @@ public class NewsActivity extends BootstrapActivity {
     @InjectExtra(NEWS_ITEM) protected News newsItem;
 
     @InjectView(R.id.tv_title) protected TextView title;
-    @InjectView(R.id.tv_content) protected TextView content;
+    @InjectView(R.id.tv_description) protected TextView content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

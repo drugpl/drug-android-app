@@ -39,12 +39,14 @@ public class Constants {
         /**
          * Base URL for all requests
          */
-        public static final String URL_BASE = "http://10.0.1.47:3000/api";
+        public static final String URL_BASE = "http://192.168.43.3:3001/api";
 
         /**
          * Events URL
          */
         public static final String URL_EVENTS = URL_BASE + "/events.json";
+
+        public static final String URL_LAST_EVENT = URL_BASE + "/events/last.json";
 
         /**
          * Authentication URL

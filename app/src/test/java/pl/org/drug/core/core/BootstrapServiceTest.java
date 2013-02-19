@@ -80,7 +80,7 @@ public class BootstrapServiceTest {
     @Test
     public void getContentEmptyResponse() throws IOException {
         doReturn(createReader("")).when(request).bufferedReader();
-        List<News> content = service.getNews();
+        List<Presentation> content = service.getNews();
         assertNotNull(content);
         assertTrue(content.isEmpty());
     }
